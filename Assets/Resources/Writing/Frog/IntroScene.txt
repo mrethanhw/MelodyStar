@@ -1,0 +1,33 @@
+Scene: StreetDay
+
+Enter Left: Froggie
+
+Froggie
+Guys, check this out: keyboardist looking for gigs!
+
+Enter Right: Frogbert
+
+Frogbert
+Dude, it’s destiny. That’s all we need to complete your vision, Froggie.
+
+Froggie
+Yeah, dude! We’re gonna have the best frog rock band this side of the Mississippi!
+
+Enter Right: Dylan
+
+Dylan
+r i b b i t
+
+Froggie
+Dude, you’re right! Back in school when we first started out we were like, can’t have frog rock without an electric organ, ribbit?
+
+Enter Right: Frogbert
+
+Frogbert
+Man, dude, that’s chill… We’re gonna make it big with your art, dude.
+
+Froggie
+Thank you Frogbert. Soon the world will know how beautiful our FROG ROCK is!
+
+Dylan
+Ribbit!

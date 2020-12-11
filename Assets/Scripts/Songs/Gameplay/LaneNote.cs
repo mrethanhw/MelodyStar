@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Songs.Model;
 using UnityEngine;
 
 namespace Songs.Gameplay {
@@ -7,13 +8,15 @@ namespace Songs.Gameplay {
 		const float fallSpeed = 8; //Should be units per second, where the screen is 10 units tall
 		const float rotateSpeed = 50;
 		const float spriteHeight = 8; // Manually encode height of the sprite
-		const float holdNoteCutoff = 0.200f; // Ms to qualify a note as a hold note (rather than a press once)
+		const float holdNoteCutoff = 0.500f; // Ms to qualify a note as a hold note (rather than a press once)
 
 		public GameObject bottomCircle;
 		public GameObject noteConnector;
 		public GameObject topCircle;
 		public bool isHoldNote = true;
 		public bool isBeingPressed = false;
+
+		public SongNote songNote;
 
 		void Start() {
 		}
@@ -26,19 +29,18 @@ namespace Songs.Gameplay {
 			}
 		}
 
-		public void setNoteWidth(float time) {
+		public void setNoteWidth() {
+			float time = songNote.endTime - songNote.startTime;
+
 			if (time < holdNoteCutoff) {
 				Destroy(topCircle);
 				Destroy(noteConnector);
 				isHoldNote = false;
 			} else {
 				Vector2 size = noteConnector.GetComponent<SpriteRenderer>().size;
-				float stretchFactor = (time / fallSpeed) * size.y;
-				float position = stretchFactor;
-				size = new Vector2(size.x, stretchFactor);
-				// noteConnector.transform.localScale = noteConnector.transform.localScale + new Vector3(0, stretchFactor, 0);
-				noteConnector.transform.localPosition = noteConnector.transform.localPosition + new Vector3(0, position * -1f, 0);
-				topCircle.transform.position = noteConnector.transform.position + new Vector3(0, position, 0);
+				float stretchFactor = (time * fallSpeed);
+				noteConnector.GetComponent<SpriteRenderer>().size = new Vector2(size.x, stretchFactor);
+				topCircle.transform.position = noteConnector.transform.position + new Vector3(0, stretchFactor, 0);
 			}
 		}
 

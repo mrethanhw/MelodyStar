@@ -5,26 +5,26 @@ using GameLoop;
 
 namespace Menuing {
 	public class MainMenu : MonoBehaviour {
-    
+
 		public GameLoopManager gameLoopManager;
 
 		void Start() {
-			if(PlayerPrefs.HasKey("saved"))
-			{
+			if (PlayerPrefs.HasKey("saved")) {
 				InputSettings.setToPrefs();
-			} 
-      else if (!InputSettings.initalized) 
-      {
+			} else if (!InputSettings.initalized) {
 				InputSettings.setToDefault();
 			}
+
+			GameLoopManager.gameLoop = GameLoopManager.defaultGameLoop;
 		}
 
 		public void story() {
+			GameLoopManager.gameLoop = GameLoopManager.defaultGameLoop;
 			StartCoroutine(gameLoopManager.advance());
 		}
 
 		public void freePlay() {
-			StartCoroutine(SceneTransition.LoadScene("Song"));
+			StartCoroutine(SceneTransition.LoadScene("SongSelect"));
 		}
 
 		public void configure() {
